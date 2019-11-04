@@ -268,7 +268,8 @@ function initPic() {
 }
 
 function giveKanaInput(object) {
-  giveAnswer(object.value);
+  var kana = object.value.slice(0,1);
+  giveAnswer(kana);
   itsyourturn();
 }
 
