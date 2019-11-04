@@ -96,7 +96,7 @@ function showAnswer(answers, standpoint = 'answer_myself') {
 
 function giveMyAnswer(answer, standpoint = 'answer_myself') {
   var word_name = answer[2];
-  var answer_attr = answer[3];
+  var answer_attr = answer[4];
   standpoint = standpoint == 'answer_myself' ? 'answer_opponent' : 'answer_myself';
   itsyourturn(standpoint);
   if (answer_attr == 'New!') {
