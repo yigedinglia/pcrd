@@ -15,7 +15,7 @@
   <div style="display:inline-block">
     <div id="save" style="display:inline-block">
       <div>
-        <h3>在这里输入未点亮图鉴的单词编号，以空格隔开，输入完毕后点确认</h3>
+        <h3 id="remain">输入未点亮图鉴的单词编号，以空格隔开，输入完毕后点确认</h3>
         <textarea class="form-control" id="initword" placeholder="例：1 2 3 5 8 13 21 34 55 89 144 233" rows="5" cols="80"
           required></textarea>
         <input type="button" id="btn-save" value="确认" onclick="btnInit()">
@@ -31,7 +31,7 @@
       <img src=css/yui.jpg class="img">
     </div>
     <div style="display:inline-block">
-      <h3>点假名开始新一局游戏</h3>
+      <h3>点假名开始新一局游戏（默认为全部单词未点亮）</h3>
       <div style="font-size: 0px">
         <input type='button' class="btn1" onclick="giveKanaInput(this)" value="あ/ア">
         <input type='button' class="btn1" onclick="giveKanaInput(this)" value="い/イ">
