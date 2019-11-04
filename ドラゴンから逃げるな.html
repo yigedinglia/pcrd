@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>一个顶俩</title>
+  <link rel="stylesheet" type="text/css" href="css/pcr.css">
+  <style id="pic-style"></style>
+</head>
+
+<body>
+  <div id="header">
+    <h1>一个顶俩</h1>
+  </div>
+  <div style="display:inline-block">
+    <div id="save" style="display:inline-block">
+      <div>
+        <h3>在这里输入未点亮图鉴的单词编号，以空格隔开，输入完毕后点确认</h3>
+        <textarea class="form-control" id="initword" placeholder="例：1 2 3 5 8 13 21 34 55 89 144 233" rows="5" cols="80"
+          required></textarea>
+        <input type="button" id="btn-save" value="确认" onclick="btnInit()">
+      </div>
+      <div style="display:inline-block">
+        <h3>输入单词对应的假名可以点亮图鉴</h3>
+        <textarea class="form-control" id="addword" placeholder="例：キョウカ ノゾミ　コッコロ" rows="5" cols="30" required></textarea>
+        <input type="button" id="btn-save" value="确认" onclick="btnAdd()">
+        <h3>存档</h3>
+        <textarea class="form-control" id="showword" placeholder="现在是空的" rows="3" cols="30" required></textarea>
+        <input type="button" id="btn-save" value="加载" onclick="btnSave()">
+      </div>
+      <img src=css/yui.jpg class="img">
+    </div>
+    <div style="display:inline-block">
+      <div style="font-size: 0px">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="あ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="い">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="う">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="え">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="お">
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="か">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="き">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="く">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="け">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="こ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="が">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ぎ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ぐ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="げ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ご">
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="さ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="し">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="す">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="せ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="そ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ざ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="じ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="す">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぜ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぞ">
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="た">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ち">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="つ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="て">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="と">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="だ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ぢ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="づ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="で">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ど">
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="な">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="に">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぬ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ね">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="の">
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="は">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ひ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ふ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="へ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ほ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ば">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="び">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ぶ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="べ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ぼ">
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ま">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="み">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="む">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="め">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="も">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぱ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぴ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぷ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぺ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ぽ">
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="や">
+        <input type='button' class="btn2" value="" disabled='true'>
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="ゆ">
+        <input type='button' class="btn2" value="" disabled='true'>
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="よ">
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="わ">
+        <input type='button' class="btn2" value="" disabled='true'>
+        <input type='button' class="btn2" onclick="giveKanaInput(this)" value="を">
+        <input type='button' class="btn2" value="" disabled='true'>
+        <input type='button' class="btn2" value="" disabled='true'>
+      </div>
+      <div style="font-size: 0px">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ら">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="り">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="る">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="れ">
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ろ">
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" onclick="giveKanaInput(this)" value="ん" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+        <input type='button' class="btn1" value="" disabled='true'>
+      </div>
+    </div>
+    <h4>平：あいうえお かきくけこ さしすせそ たちつてと なにぬねの はひふへほ まみむめも やゆよ らりるれろ わを がぎぐげご ばびぶべぼ ぱぴぷぺぽ だぢづでど んじずぞ</h4>
+    <h4>片：アイウエオ カキクケコ サシスセソ タチツテト ナニヌネノ ハヒフヘホ マミムメモ ヤユヨ ラリルレロ ワヲ ガギグゲゴ バビブベボ パピプペポ ダヂヅデド ンジズゾ</h4>
+
+  </div>
+  <div id="answer">
+    <div style="display: inline-block; vertical-align: top;">
+      <h3>你的回答</h3>
+      <h5 id='dd_myself' style="color: white">到你了弟弟</h5>
+      <div id="answer_myself"></div>
+    </div>
+    <div style="display: inline-block; vertical-align: top;">
+      <h3>对方的回答</h3>
+      <h5 id='dd_opponent' style="color: white">到你了弟弟</h5>
+      <div id="answer_opponent"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/predict.js"></script>
+</body>
+
+</html>
