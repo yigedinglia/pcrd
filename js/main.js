@@ -39,9 +39,9 @@ function giveAnswer(input, standpoint = 'answer_myself') {
       recommend_rate = recommend_rate.toFixed(2);
     }
     if (save_status == 1) {
-      answers_new.push(new Array(pic_id, word_id, word_name, 'New!', recommend_rate));
+      answers_new.push(new Array(pic_id, word_id, word_name, recommend_rate, 'New!'));
     } else {
-      answers_old.push(new Array(pic_id, word_id, word_name, 'Old', recommend_rate));
+      answers_old.push(new Array(pic_id, word_id, word_name, recommend_rate, ''));
     }
   }
 
@@ -54,7 +54,7 @@ function giveAnswer(input, standpoint = 'answer_myself') {
 
 function sortArray(array) {
   var result = array.sort(function (a, b) {
-    return b[4] - a[4];
+    return b[3] - a[3];
   })
   return result;
 }
@@ -69,14 +69,14 @@ function showAnswer(answers, standpoint = 'answer_myself') {
     var pic_id = answer[0];
     var word_id = answer[1];
     var word_name = answer[2];
-    var answer_attr = answer[3];
-    var recommend_rate = answer[4];
+    var recommend_rate = answer[3];
+    var answer_attr = answer[4];
 
     var div1 = document.createElement('div');
     div1.setAttribute('class', 'pic');
     div1.setAttribute('pic-id', pic_id);
     var div2 = document.createElement('div');
-    div2.innerHTML = 'No.' + word_id + ' ' + word_name + ' ' + answer_attr + ' 评分: ' + recommend_rate;
+    div2.innerHTML = 'No.' + word_id + ' ' + word_name + ' 评分: ' + recommend_rate + ' ' + answer_attr;
     document.getElementById(standpoint).appendChild(div1);
     document.getElementById(standpoint).appendChild(div2);
 
