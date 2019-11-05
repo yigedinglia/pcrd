@@ -64,7 +64,7 @@ function check() {
     }
     result[kana] = total;
   }
-  console.log(result);
+  //console.log(result);
 }
 
 function changeKataToHira(katakana) {
