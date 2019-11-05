@@ -61,17 +61,16 @@ function sortArray(array) {
 
 function showAnswer(answers, standpoint = 'answer_myself') {
   document.getElementById(standpoint).innerHTML = '';
-  console.log(answers)
+  //console.log(answers)
   str = '';
   for (var i = 0; len = answers.length, i < len; i++) {
     var answer = answers[i];
-    console.log('answer:' + answer)
+    //console.log('answer:' + answer)
     var pic_id = answer[0];
     var word_id = answer[1];
     var word_name = answer[2];
     var recommend_rate = answer[3];
     var answer_attr = answer[4];
-
     var div1 = document.createElement('div');
     div1.setAttribute('class', 'pic');
     div1.setAttribute('pic-id', pic_id);
@@ -95,7 +94,7 @@ function showAnswer(answers, standpoint = 'answer_myself') {
     })(answer);
     document.getElementById(standpoint).appendChild(inp);
   }
-  console.log('str:' + str);
+  //console.log('str:' + str);
 }
 
 function giveMyAnswer(answer, standpoint = 'answer_myself') {
@@ -104,12 +103,12 @@ function giveMyAnswer(answer, standpoint = 'answer_myself') {
   standpoint = standpoint == 'answer_myself' ? 'answer_opponent' : 'answer_myself';
   itsyourturn(standpoint);
   if (answer_attr == 'New!') {
-    console.log('new!:' + word_name)
+    //console.log('new!:' + word_name)
     btnAdd(word_name);
   }
   var kana_last = getLastKana(word_name);
   var answers = giveAnswer(kana_last, standpoint);
-  console.log('answers_givemy:' + answers)
+  //console.log('answers_givemy:' + answers)
 }
 
 function itsyourturn(standpoint = 'answer_myself') {
@@ -160,7 +159,7 @@ function btnAdd(str = 0) {
     word = word_arr[i];
     if (word_data.hasOwnProperty(word)) {
       word_id = word_data[word][1];
-      console.log('word_id:' + word_id)
+      //console.log('word_id:' + word_id)
       word_id_arr.push(word_id);
     }
   }
@@ -198,7 +197,7 @@ function modifySaveData(word_id_arr, word_status) {
   for (let i = 0; len = word_id_arr.length, i < len; i++) {
     word_id = word_id_arr[i];
     savedata[word_id - 1] = word_status;
-    console.log('word_id:' + word_id + 'savestatus:' + savedata[word_id - 1])
+    //console.log('word_id:' + word_id + 'savestatus:' + savedata[word_id - 1])
   }
   showSaveData();
 }
@@ -230,10 +229,10 @@ function string2to64(numbers) {
   for (var i = 0; len = numbers.length, i < len; i++) {
     num2 = numbers[i];
     num10 = parseInt(num2, 2);
-    console.log('num10:' + num10);
+    //console.log('num10:' + num10);
     result += chars[num10]
   }
-  console.log('result:' + result);
+  //console.log('result:' + result);
   return result;
 }
 
@@ -253,7 +252,7 @@ function string64to2(numbers) {
     }
     result += num2;
   }
-  console.log('result:' + result);
+  //console.log('result:' + result);
   result = result.split('');
   result.map(Number);
   return result;
