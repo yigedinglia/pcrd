@@ -76,7 +76,11 @@ function showAnswer(answers, standpoint = 'answer_myself') {
     div1.setAttribute('class', 'pic');
     div1.setAttribute('pic-id', pic_id);
     var div2 = document.createElement('div');
-    div2.innerHTML = 'No.' + word_id + ' ' + word_name + ' 评分: ' + recommend_rate + ' ' + answer_attr;
+    if (standpoint == 'answer_myself') {
+      div2.innerHTML = 'No.' + word_id + ' ' + word_name + ' 评分: ' + recommend_rate + ' ' + answer_attr;
+    } else {
+      div2.innerHTML = 'No.' + word_id + ' ' + word_name + ' ' + answer_attr;
+    }
     document.getElementById(standpoint).appendChild(div1);
     document.getElementById(standpoint).appendChild(div2);
 
