@@ -89,7 +89,6 @@ function setRemainWords(savedata) {
       count++;
     }
   }
-  console.log('修改remain_words:' + JSON.stringify(remain_words));
   remain_words_num = count;
 }
 
@@ -271,7 +270,6 @@ function string64to2(numbers) {
 }
 
 function string2to64(numbers) {
-  console.log('number:' + numbers);
   var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ?%'
   var result = '';
   for (var i = 0; len = numbers.length, i < len; i++) {
