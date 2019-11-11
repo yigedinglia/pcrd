@@ -11,7 +11,7 @@ var remain_words_nopcr_num = 0;
 var target_words = {};
 
 var rate_setting = 1;
-var display_setting = 0;
+var display_setting = 1;
 var rate_depth = 4;
 var rate_priority = 0;
 var vip_targets = []
