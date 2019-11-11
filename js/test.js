@@ -161,7 +161,7 @@ function giveWordInput(answer, standpoint = 'answer_myself') {
   var word_id = answer[1];
   var word_name = answer[2];
   var answer_attr = answer[4];
-  standpoint = standpoint == 'answer_myself' ? 'answer_opponent' : 'answer_myself';
+  standpoint = (standpoint == 'answer_myself') ? 'answer_opponent' : 'answer_myself';
   itsyourturn(standpoint);
   if (answer_attr == 1) {
     editSingleWord(word_id);
@@ -182,7 +182,7 @@ function giveAnswer(kana, standpoint = 'answer_myself') {
     var pic_id = word[0];
     var word_id = word[1];
     var save_status = global_savedata[word_id - 1];
-    var recommend_rate = getRecommendRate(word_name);
+    var recommend_rate = getRecommendRate(word_name, standpoint);
     var word_answer = new Array(pic_id, word_id, word_name, recommend_rate, save_status)
     result.push(word_answer)
   }
@@ -264,7 +264,6 @@ function showAnswer(answers, standpoint = 'answer_myself') {
     var text = document.createElement('p');
     text.setAttribute('class', 'answer');
     text.innerHTML = result_str;
-
     div1.appendChild(img);
     div1.appendChild(text);
     document.getElementById(standpoint).appendChild(div1);
@@ -278,11 +277,11 @@ function showAnswer(answers, standpoint = 'answer_myself') {
   }
 }
 
-function getRecommendRate(word_name) {
+function getRecommendRate(word_name, standpoint) {
   var kana = getLastKana(word_name);
   var remain_words = getRemainWords();
   if (rate_setting == 0) return ['未启用评分']
-  var result = checkRate(dicts, remain_words, remain_words_nopcr, kana, rate_depth);
+  var result = (standpoint == 'answer_myself') ? checkRate(dicts, remain_words, remain_words_nopcr, kana, rate_depth) : checkRateForOpponent(dicts, remain_words, remain_words_nopcr, kana, rate_depth);
 
   for (var i in result) {
     result[i] *= 10;

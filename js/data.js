@@ -58,3 +58,44 @@ function checkRate(dicts, remain_words, remain_words_nopcr, kana, depth = 4) {
   }
   return result;
 }
+
+function checkRateForOpponent(dicts, remain_words, remain_words_nopcr, kana, depth = 4) {
+  var result = [];
+  depth = Math.max(Math.min(dicts.length, depth - 1), 1);
+  var remains = [remain_words_nopcr, remain_words];
+  var lengths = [hide_priconne, kana_data];
+  if (remain_words.hasOwnProperty(kana) && kana_data.hasOwnProperty(kana)) {
+    var len = kana_data[kana].length;
+    if (len != 0) result.push(remain_words[kana] / len);
+  } else {
+    result.push(0);
+  }
+  for (var i = 0; i < depth; i++) {
+    var layer = dicts[i];
+    var total = 0;
+    var len = 0;
+    var j = i % 2;
+    if (layer.hasOwnProperty(kana)) {
+      var obj = layer[kana];
+      len = obj['len'];
+      for (var k in obj) {
+        if (remains[j].hasOwnProperty(k)) {
+          if (target_words.hasOwnProperty(k)) {
+            var val = obj[k] * remains[j][k] * target_words[k];
+          } else {
+            var val = obj[k] * remains[j][k]
+          }
+          if(lengths[j].hasOwnProperty(k) && lengths[j][k].length!=0){
+            val /= lengths[j][k].length;
+          }
+          total += val;
+        }
+      }
+    } else {
+      total = -1;
+    }
+    total = len > 0 ? total / len : 0;
+    result.push(total);
+  }
+  return result;
+}
