@@ -13,7 +13,7 @@ var target_words = {};
 var rate_setting = 1;
 var display_setting = 1;
 var rate_depth = 4;
-var rate_priority = 0;
+var rate_priority = 1;
 var vip_targets = []
 
 function Init(status = 1) {
