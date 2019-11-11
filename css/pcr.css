@@ -1,7 +1,7 @@
 .btn1{
 	font-family: "'微软雅黑','Helvetica Neue',Helvetica,Arial,sans-serif";
-  font-size: 18px;
-  width: 70px;
+  font-size: 16px;
+  width: 60px;
 	height: 50px;
 	line-height: 18px;
 	padding: 0;
@@ -17,8 +17,8 @@
 
 .btn2{
 	font-family: "'微软雅黑','Helvetica Neue',Helvetica,Arial,sans-serif";
-  font-size: 18px;
-  width: 70px;
+  font-size: 16px;
+  width: 60px;
 	height: 50px;
 	line-height: 18px;
 	padding: 0;
@@ -35,11 +35,28 @@
 .pic{
   width: 80px;
   height:80px;
-  background-image:url(pcr.png);
+	background-image:url(pcr.jpg);
+	display: inline-block;
 }
 
 .img{
 	width:240px;
 	height:240px;
 	padding: 0 0 0 40px;
+}
+
+.answer{
+	margin:0 auto;
+	display: inline-block;
+	vertical-align: 80%;
+	line-height: 150%;
+	padding: 10px;
+}
+
+h1{
+	margin: 10px 0;
+}
+
+h3{
+	margin: 15px 0;
 }
