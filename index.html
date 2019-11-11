@@ -36,29 +36,29 @@
       </div>
     </div>
     <div>
-      <h3 id="setting">设置（下次操作生效）</h3>
+      <h3 id="setting">设置（修改后下次操作生效）</h3>
       <label>启用评分</label>
       <select id="rate_setting" onchange="setRate(this)">
         <option value="1">是</option>
         <option value="0">否</option>
       </select>
-      <label>显示设置</label>
+      <label>显示</label>
       <select id="display_setting" onchange="setDisplay(this)">
-        <option value="1">仅显示图片和单词</option>
-        <option value="0">标准</option>
-        <option value="2">仅显示图片</option>
-        <option value="3">仅显示评分</option>
+        <option value="1">图片和单词</option>
+        <option value="0">图片、单词和评分</option>
+        <option value="2">仅图片</option>
+        <option value="3">仅评分</option>
       </select>
       <label>深度</label>
       <select id="rate_depth" onchange="setDepth(this)">
-        <option value="4">2回合</option>
-        <option value="2">1回合</option>
+        <option value="4">2轮(4回合)</option>
+        <option value="2">1轮(2回合)</option>
       </select>
-      <label>优先级</label>
+      <label>排序</label>
       <select id="rate_priority" onchange="setPriority(this)">
-        <option value="0">双方同等（回合数优先）</option>
-        <option value="1">我方回答优先</option>
-        <option value="2">对方回答优先</option>
+        <option value="0">我全都要(按回合数排序)</option>
+        <option value="1">以我方找新词为主</option>
+        <option value="2">以对方找新词为主</option>
       </select>
       <br>
     </div>

@@ -1,20 +1,23 @@
 var global_savedata = [];
 var savedata_encoded = '';
+//use for global_savedata <-> savefile
 var savedata_len = 505;
 var savedata_mod = 6;
 var savedata_last = savedata_len - parseInt(savedata_len / savedata_mod) * savedata_mod;
+//remain new word lists
+//wordtype1: normal type2: great type3: priconne
+//[remain_words] include all types while [remain_words_nopcr] doesn't include type3 because your computer opponent will not answer any words of type3
 var remain_words = {};
 var remain_words_num = 0;
 var remain_words_nopcr = {};
 var remain_words_nopcr_num = 0;
-
+//word lists for increasing weight
 var target_words = {};
-
+//settings
 var rate_setting = 1;
 var display_setting = 1;
 var rate_depth = 4;
 var rate_priority = 0;
-var vip_targets = []
 
 function Init(status = 1) {
   global_savedata = [];
@@ -28,6 +31,7 @@ function Reset(status) {
   editSaveFile(Init(status));
 }
 
+//increase weight of these words/kanas
 function setTargetWords(weight = 99) {
   var str = document.getElementById('targetwords').value;
   saveToStorage('target_words', str)
@@ -51,6 +55,7 @@ function clearTargetWords() {
   saveToStorage('target_words', '')
 }
 
+//word_id -> global_savedata
 function readWord() {
   Init(0);
   var str = document.getElementById('initword').value;
@@ -65,6 +70,7 @@ function readWord() {
   editSaveFile(savedata);
 }
 
+//savefile -> global_savedata
 function readSaveFile() {
   var str = document.getElementById('showword').value;
   var savedata = string64to2(str);
@@ -89,6 +95,7 @@ function editSingleWord(word_id, word_status = 0) {
   editSaveFile(global_savedata);
 }
 
+//global_savedata -> word_id
 function writeWord(savedata) {
   var str = '';
   for (var i = 0; len = savedata.length, i < len; i++) {
@@ -100,6 +107,7 @@ function writeWord(savedata) {
   document.getElementById('initword').value = str;
 }
 
+//global_savedata -> savefile
 function writeSaveFile(savedata) {
   var str = savedata.join('');
   var split_len = 6;
@@ -150,6 +158,7 @@ function getRemainWords() {
   return remain_words;
 }
 
+//Hiragana table input -> give answer
 function giveKanaInput(object) {
   var kana = changeKataToHira(object.value.slice(0, 1));
   editSaveFile(global_savedata);
@@ -157,6 +166,7 @@ function giveKanaInput(object) {
   itsyourturn();
 }
 
+//Answer list input -> give answer
 function giveWordInput(answer, standpoint = 'answer_myself') {
   var word_id = answer[1];
   var word_name = answer[2];
@@ -223,6 +233,7 @@ function sortArray(array) {
   return result;
 }
 
+//display answers on screen
 function showAnswer(answers, standpoint = 'answer_myself') {
   document.getElementById(standpoint).innerHTML = '';
   for (var i = 0; len = answers.length, i < len; i++) {
@@ -294,6 +305,7 @@ function getRecommendRate(word_name, standpoint) {
 var hirakana_data = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをがぎぐげごばびぶべぼぱぴぷぺぽだぢづでどんじずぞあいうえおやゆよわつあいうえおやゆよわつ'
 var katakana_data = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲガギグゲゴバビブベボパピプペポダヂヅデドンジズゾぁぃぅぇぉゃゅょゎっァィゥェォャュョヮッ'
 
+//normalized all kanas
 function changeKataToHira(kana) {
   for (var i = 0; i < katakana_data.length; i++) {
     if (kana == katakana_data[i]) {
@@ -363,6 +375,7 @@ function initPic() {
   document.getElementById("pic-style").innerHTML = str;
 }
 
+//show 'it's your turn' on screen
 function itsyourturn(standpoint = 'answer_myself') {
   var dd_myself = document.getElementById('dd_myself');
   var dd_opponent = document.getElementById('dd_opponent');
@@ -375,8 +388,7 @@ function itsyourturn(standpoint = 'answer_myself') {
   }
 }
 
-
-
+//setting functions
 function setRate(obj) {
   rate_setting = parseInt(obj.value);
   saveToStorage('rate_setting', rate_setting);
@@ -397,6 +409,7 @@ function setPriority(obj) {
   saveToStorage('rate_priority', rate_priority);
 }
 
+//savefile & settings -> DomStorage
 function saveToStorage(name, value) {
   if (window.localStorage) {
     if (name == 'global_savedata') {
@@ -448,6 +461,7 @@ function readFromStorage() {
   }
 }
 
+//Init
 initPic();
 Init();
 readFromStorage();
