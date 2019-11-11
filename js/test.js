@@ -118,7 +118,11 @@ function setRemainWords(savedata) {
   for (var i = 0; len = savedata.length, i < len; i++) {
     if (savedata[i] == 1) {
       var kana = word_map[i];
-      remain_words[kana] = 1
+      if (remain_words.hasOwnProperty(kana)) {
+        remain_words[kana]++;
+      } else {
+        remain_words[kana] = 1;
+      }
       count++;
     }
   }
@@ -131,7 +135,11 @@ function setRemainWordsNoPCR(savedata) {
   for (var i = 0; len = savedata.length, i < len; i++) {
     if (savedata[i] == 1 && word_map_rare[i] != '3') {
       var kana = word_map[i];
-      remain_words_nopcr[kana] = 1;
+      if (remain_words_nopcr.hasOwnProperty(kana)) {
+        remain_words_nopcr[kana]++;
+      } else {
+        remain_words_nopcr[kana] = 1;
+      }
       count++;
     }
   }
@@ -274,6 +282,7 @@ function getRecommendRate(word_name) {
   var result = checkRate(dicts, remain_words, remain_words_nopcr, kana, rate_depth);
 
   for (var i in result) {
+    result[i] *= 10;
     var digit = result[i] > 0.000001 ? Math.max(Math.ceil(-Math.log10(result[i])), 2) : 2;
     result[i] = result[i].toFixed(digit);
   }
