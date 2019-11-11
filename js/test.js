@@ -246,6 +246,9 @@ function showAnswer(answers, standpoint = 'answer_myself') {
       case 1:
         var result_str = '  No.' + word_id + ' ' + word_name + ' ' + answer_attr;
         break;
+      case 3:
+        var result_str = rate_str;
+        break;
       default:
         var result_str = '';
         break;
