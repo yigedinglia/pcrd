@@ -24,12 +24,12 @@
         <input type="button" id="btn-reset" value="清空" onclick="Reset(0)">
       </div>
       <div>
-        <h3>存档（自动保存）</h3>
+        <h3>存档（自动保存，可收藏下次继续）</h3>
         <textarea class="form-control" id="showword" placeholder="现在是空的" rows="2" cols="80" required></textarea>
         <input type="button" id="btn-save" value="加载" onclick="readSaveFile()">
       </div>
       <div>
-        <h3>单词狙击（输入编号，以空格隔开，提升对应假名开头单词的评分）</h3>
+        <h3>单词狙击（输入编号提升对应单词评分，以空格隔开）</h3>
         <textarea class="form-control" id="targetwords" placeholder="例：37 394" rows="1" cols="80" required></textarea>
         <input type="button" id="btn-save" value="确认" onclick="setTargetWords()">
         <input type="button" id="btn-save" value="清空" onclick="clearTargetWords()">
@@ -175,13 +175,13 @@
   </div>
   <div id="answer" style="display:inline-block;vertical-align: top">
     <div style="display: inline-block; vertical-align: top;">
-      <h5 id='dd_myself' style="color: white">到你了弟弟（tips:点图标接龙）</h5>
+      <h5 id='dd_myself' style="color: white">到你了弟弟(tips: 点图标接龙)</h5>
       <h3>你的回答</h3>
 
       <div id="answer_myself"></div>
     </div>
     <div style="display: inline-block; vertical-align: top;">
-      <h5 id='dd_opponent' style="color: white">到你了弟弟</h5>
+      <h5 id='dd_opponent' style="color: white">到你了弟弟(tips: 对方不会回答第三种类型的单词)</h5>
       <h3>对方的回答</h3>
 
       <div id="answer_opponent"></div>

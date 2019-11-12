@@ -192,9 +192,13 @@ function giveAnswer(kana, standpoint = 'answer_myself') {
     var pic_id = word[0];
     var word_id = word[1];
     var save_status = global_savedata[word_id - 1];
-    var recommend_rate = getRecommendRate(word_name, standpoint);
-    var word_answer = new Array(pic_id, word_id, word_name, recommend_rate, save_status)
-    result.push(word_answer)
+    //do not calculate type3 words of the opponent
+    console.log('standpoint:'+standpoint+' word_id:'+word_id+' rare:');
+    if (!(standpoint == 'answer_opponent' && word_map_rare[parseInt(word_id) - 1] == '3')) {
+      var recommend_rate = getRecommendRate(word_name, standpoint);
+      var word_answer = new Array(pic_id, word_id, word_name, recommend_rate, save_status)
+      result.push(word_answer)
+    }
   }
   result = sortArray(result);
   showAnswer(result, standpoint);
