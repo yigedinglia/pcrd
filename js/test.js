@@ -193,12 +193,12 @@ function giveAnswer(kana, standpoint = 'answer_myself') {
     var word_id = word[1];
     var save_status = global_savedata[word_id - 1];
     //do not calculate type3 words of the opponent
-    console.log('standpoint:'+standpoint+' word_id:'+word_id+' rare:');
-    if (!(standpoint == 'answer_opponent' && word_map_rare[parseInt(word_id) - 1] == '3')) {
-      var recommend_rate = getRecommendRate(word_name, standpoint);
-      var word_answer = new Array(pic_id, word_id, word_name, recommend_rate, save_status)
-      result.push(word_answer)
-    }
+    //console.log('standpoint:'+standpoint+' word_id:'+word_id+' rare:');
+    //if (!(standpoint == 'answer_opponent' && word_map_rare[parseInt(word_id) - 1] == '3')) {
+    var recommend_rate = getRecommendRate(word_name, standpoint);
+    var word_answer = new Array(pic_id, word_id, word_name, recommend_rate, save_status)
+    result.push(word_answer)
+    //}
   }
   result = sortArray(result);
   showAnswer(result, standpoint);
@@ -252,6 +252,9 @@ function showAnswer(answers, standpoint = 'answer_myself') {
       for (var j = 0; j < recommend_rate.length; j++) {
         rate_str = rate_str + recommend_rate[j] + ' ';
       }
+    }
+    if (standpoint == 'answer_opponent' && word_map_rare[parseInt(word_id) - 1] == '3') {
+      rate_str += '(对方一般不会回答此单词)'
     }
     var answer_attr = answer[4] == 1 ? 'New!' : '';
     switch (display_setting) {
