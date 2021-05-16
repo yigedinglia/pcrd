@@ -10,13 +10,13 @@
 
 <body>
   <div style="display:inline-block">
-    <h1 style="display: inline-block;">一个顶俩V0.3</h1>
-    <div style="display: inline-block;">历史版本：<a href="history/1.html">v0.1</a> <a href="history/2.html">v0.2</a>
-      帮助兼反馈帖<a href="https://bbs.nga.cn/read.php?tid=19152993">戳这里</a></div>
+    <h1 style="display: inline-block;">一个顶俩v0.4</h1>
+    <div style="display: inline-block;">词库更新（No.506~753）历史版本：<a href="history/3.html">v0.3</a>
+      <a href="https://bbs.nga.cn/read.php?tid=19152993">帮助兼反馈帖</a></div>
 
     <div id="save">
       <div>
-        <h3 id="remain">输入未点亮图鉴的单词编号，以空格隔开，输入完毕后点确认</h3>
+        <h3 id="remain">输入未点亮图鉴的单词编号（以空格隔开），并点击确认键</h3>
         <textarea class="form-control" id="initword" placeholder="例：1 2 3 5 8 13 21 34 55 89 144 233" rows="4" cols="80"
           required></textarea>
         <input type="button" id="btn-save" value="确认" onclick="readWord()">
@@ -24,12 +24,12 @@
         <input type="button" id="btn-reset" value="清空" onclick="Reset(0)">
       </div>
       <div>
-        <h3>存档（自动保存，可收藏下次继续）</h3>
+        <h3>存档（自动保存）</h3>
         <textarea class="form-control" id="showword" placeholder="现在是空的" rows="2" cols="80" required></textarea>
         <input type="button" id="btn-save" value="加载" onclick="readSaveFile()">
       </div>
       <div>
-        <h3>单词狙击（输入编号提升对应单词评分，以空格隔开）</h3>
+        <h3>单词狙击（输入想优先选择的单词编号，以空格隔开）</h3>
         <textarea class="form-control" id="targetwords" placeholder="例：37 394" rows="1" cols="80" required></textarea>
         <input type="button" id="btn-save" value="确认" onclick="setTargetWords()">
         <input type="button" id="btn-save" value="清空" onclick="clearTargetWords()">
@@ -44,21 +44,21 @@
       </select>
       <label>显示</label>
       <select id="display_setting" onchange="setDisplay(this)">
-        <option value="1">图片和单词</option>
+        <option value="1">图片、单词</option>
         <option value="0">图片、单词和评分</option>
         <option value="2">仅图片</option>
         <option value="3">仅评分</option>
       </select>
       <label>深度</label>
       <select id="rate_depth" onchange="setDepth(this)">
-        <option value="4">2轮(4回合)</option>
-        <option value="2">1轮(2回合)</option>
+        <option value="4">2</option>
+        <option value="2">1</option>
       </select>
-      <label>排序</label>
+      <label>新词优先级</label>
       <select id="rate_priority" onchange="setPriority(this)">
-        <option value="0">我全都要(按回合数排序)</option>
-        <option value="1">以我方找新词为主</option>
-        <option value="2">以对方找新词为主</option>
+        <option value="0">全部</option>
+        <option value="1">仅我方</option>
+        <option value="2">仅对方</option>
       </select>
       <br>
     </div>
@@ -175,14 +175,14 @@
   </div>
   <div id="answer" style="display:inline-block;vertical-align: top">
     <div style="display: inline-block; vertical-align: top;">
-      <h5 id='dd_myself' style="color: white">到你了弟弟(tips: 点图标接龙)</h5>
+      <h5 id='dd_myself' style="color: white">“到你了弟弟”(点击图标继续)</h5>
       <h3>你的回答</h3>
 
       <div id="answer_myself"></div>
     </div>
     <div style="display: inline-block; vertical-align: top;">
-      <h5 id='dd_opponent' style="color: white">到你了弟弟(tips: 对方不会回答第三种类型的单词，不参与计算)</h5>
-      <h3>对方的回答</h3>
+      <h5 id='dd_opponent' style="color: white">“到你了弟弟”(点击图标继续)</h5>
+      <h3>kaya的回答</h3>
 
       <div id="answer_opponent"></div>
     </div>

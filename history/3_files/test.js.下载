@@ -1,7 +1,7 @@
 var global_savedata = [];
 var savedata_encoded = '';
 //use for global_savedata <-> savefile
-var savedata_len = 753;
+var savedata_len = 755;
 var savedata_mod = 6;
 var savedata_last = savedata_len - parseInt(savedata_len / savedata_mod) * savedata_mod;
 //remain new word lists
@@ -256,7 +256,7 @@ function showAnswer(answers, standpoint = 'answer_myself') {
       }
     }
     if (standpoint == 'answer_opponent' && word_map_rare[parseInt(word_id) - 1] == '3') {
-      rate_str += '(kaya一般不会回答此单词)'
+      rate_str += '(对方一般不会回答此单词)'
     }
     var answer_attr = answer[4] == 1 ? 'New!' : '';
     switch (display_setting) {
@@ -349,7 +349,7 @@ function string64to2(numbers) {
   for (var i = 0; len = numbers.length, i < len; i++) {
     num10 = chars.indexOf(numbers[i]);
     num2 = num10.toString(2);
-    if (num2.length < savedata_mod) {
+    if (i < (len - 1) && num2.length < savedata_mod) {
       let l = num2.length;
       let l_max = i < (len - 1) ? savedata_mod : savedata_last;
       while (l < l_max) {
@@ -363,17 +363,6 @@ function string64to2(numbers) {
   result.map(Number);
   return result;
 }
-
-var aaa = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001'
-var bbb = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002'
-var ccc = '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%7'
-var rrr1 = string64to2(aaa)
-var rrr2 = string64to2(bbb)
-var rrr3 = string64to2(ccc)
-console.log(rrr1)
-console.log(rrr2)
-console.log(rrr3)
-
 
 function string2to64(numbers) {
   var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ?%'

@@ -33,6 +33,15 @@ function checkRate(dicts, remain_words, remain_words_nopcr, kana, depth = 4) {
       var obj = layer[kana];
       len = obj['len'];
       for (var k in obj) {
+        if (kana == 'と') {
+          console.log(remains[j])
+          if (k == 'り') {
+            remains[j][k] = 999
+            console.log(remains[j])
+          }
+          console.log('k:' + k)
+          console.log('bool:' + remains[j].hasOwnProperty(k))
+        }
         if (remains[j].hasOwnProperty(k)) {
           if (target_words.hasOwnProperty(k)) {
             var val = obj[k] * remains[j][k] * target_words[k];
