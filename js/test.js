@@ -364,17 +364,6 @@ function string64to2(numbers) {
   return result;
 }
 
-var aaa = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001'
-var bbb = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002'
-var ccc = '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%7'
-var rrr1 = string64to2(aaa)
-var rrr2 = string64to2(bbb)
-var rrr3 = string64to2(ccc)
-console.log(rrr1)
-console.log(rrr2)
-console.log(rrr3)
-
-
 function string2to64(numbers) {
   var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ?%'
   var result = '';
